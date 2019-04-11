@@ -4,7 +4,8 @@ import Home from './views/Home.vue';
 import Signup from './views/Signup.vue';
 import Login from './views/Login.vue';
 import Logout from './views/Logout.vue';
-import Index from './views/Index.vue';
+import ConsumptionIndex from './views/ConsumptionIndex.vue';
+import FoodsIndex from './views/FoodsIndex.vue';
 
 Vue.use(Router);
 
@@ -41,9 +42,14 @@ export default new Router({
       component: Logout  
     },
     { 
-      path: "/index",
+      path: "/consumptions",
       name: "index",
-      component: Index  
+      component: ConsumptionIndex  
+    },
+    { 
+      path: "/foods",
+      name: "foods",
+      component: FoodsIndex  
     }
   ]
 });
