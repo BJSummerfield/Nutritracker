@@ -9,17 +9,15 @@
     <hr>
     <div v-for="food in foods">
       <p> {{ food.food['desc']['name'] }}</p>
-      <button v-on:click="currentFood = food">More Info</button>
+      <button v-on:click="moreInfo(food)">Measures</button>
       <div v-if="food === currentFood">
         <div v-for="label in food.food['nutrients'][0]['measures']">
           <div v-if="label && label.label">
-            <p>{{label.label }}</p>
+            <button>{{ label.label }}</button> <!--Work here measure button -->
           </div>
         </div>
       </div>
       <hr>
-
-
     </div>
   </div>
 </template>
@@ -43,10 +41,12 @@ export default {
   //   });
   // },
   methods: {
-    moreInfo: function() {
-      console.log(this.information);
-      this.information = this.food['desc']['ndbno'];
-      console.log(this.information);
+    moreInfo: function(theFood) {
+      if (this.currentFood === theFood) {
+        this.currentFood = {};
+      } else {
+        this.currentFood = theFood;
+      }
     },
 
     searchFood: function(theFood) {
