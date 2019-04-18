@@ -23,59 +23,34 @@
 </template>
 
 <script>
-
 import axios from "axios";
+
 export default {
   data: function() {
     return {
       foodSearch: "",
       group: "",
       foods: [],
-      currentFood: {},
-      errors: []
+      currentFood: {}
     };
   },
-
+  // created: function() {
+  //   axios.get("/api/foods").then(response => {
+  //     console.log(response.data);
+  //     this.foods = response.data;
+  //   });
+  // },
   methods: {
     createConsumption: function(label) {
       console.log("Creating Consumption");
       console.log(label);
-  
-      var nutrientGrab = (nutrient) => {
-        var value =  this.currentFood.food.nutrients.filter(d => d.name === nutrient);
-        return valueGrab(value);
-      };
+      console.log(this.currentFood.food.ndbno);
 
-      var valueGrab = (nutrient) => {
-        return nutrient[0].measures.filter(d => d && d.label === label);
-      };
-
-      var energy = nutrientGrab("Energy");
-      console.log(energy);
-
-      var protien = nutrientGrab("Protein");
-      console.log(protien);
-
-      var sodium = nutrientGrab("Sodium, Na");
-      console.log(sodium);
-    
       var params = {
-        meal: "breakfast",
-        name: this.currentFood.food.desc.name,
-        protein: protien[0].value,
-        sodium: sodium[0].value,
-        energy: energy[0].value         
+          
       };
-      console.log(params);
-      axios.post("/api/consumptions", params).then(response => {
-        console.log(response.data);
-        this.$router.push("/consumptions");
-      }).catch(error => {
-        console.log(error.response.data.errors);
-        this.errors = error.response.data.errors;
-      });
-    },
 
+    },
     moreInfo: function(theFood) {
       if (this.currentFood === theFood) {
         this.currentFood = {};
