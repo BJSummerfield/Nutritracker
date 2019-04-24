@@ -4,6 +4,7 @@
     <hr>
     <form v-on:submit.prevent="searchFood()">
       <p>Name: <input type="text" v-model="foodSearch"></p>
+      <p>Group: <input type="text" v-model="group"></p>
       <input type="submit" value="search">
     </form>
     <hr>
@@ -88,7 +89,7 @@ export default {
       console.log('searching database');
       var params = {
         food: this.foodSearch,
-        group: "0100"
+        group: this.group
       };
       console.log(params);
 
