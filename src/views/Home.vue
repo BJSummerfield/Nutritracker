@@ -16,9 +16,11 @@ export default {
   data: function() {
     return {
       planetChartData: planetChartData,
+      nutrients: ["protien", "stuff", 'Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn']
     };
   },
   mounted() {
+    this.planetChartData.data.labels = this.nutrients;
     this.createChart('planet-chart', this.planetChartData);
   },
   methods: {
