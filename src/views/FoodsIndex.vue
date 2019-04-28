@@ -3,8 +3,20 @@
     <h1>Search Food</h1>
     <hr>
     <form v-on:submit.prevent="searchFood()">
+      <p>Date: <datetime type="date" v-model="date"></datetime></p>
+       <div class="form-group">
+            <label for="meals">Meal: </label>
+              <select name="meal" v-model="meal">
+                <option v-for="meal in meals" :value="meal">{{meal}}</option>
+              </select>
+        </div>
       <p>Name: <input type="text" v-model="foodSearch"></p>
-      <p>Group: <input type="text" v-model="group"></p>
+      <div class="form-group">
+            <label for="group">Groups: </label>
+              <select name="group" v-model="group">
+                <option v-for="group in groups" :value="group.value">{{ group.name }}</option>
+              </select>
+        </div>
       <input type="submit" value="search">
     </form>
     <hr>
@@ -30,11 +42,22 @@ export default {
   data: function() {
     return {
       foodSearch: "",
-      group: "",
+      groups: [],
       foods: [],
       currentFood: {},
-      errors: []
+      errors: [],
+      group: "",
+      meals: ["Breakfast", "Lunch", "Dinner", "Snack"],
+      meal: "",
+      date: ""
     };
+  },
+
+  created: function() {
+    axios.get("/api/groups").then(response => {
+      this.groups = response.data;
+      console.log(this.groups)
+    });
   },
 
   methods: {
@@ -61,7 +84,8 @@ export default {
       console.log(sodium);
     
       var params = {
-        meal: "breakfast",
+        meal: this.meal,
+        date: this.date,
         name: this.currentFood.food.desc.name,
         protein: protien[0].value,
         sodium: sodium[0].value,
