@@ -6,7 +6,6 @@
     <h1>Your Meals</h1>
 
     <datetime v-model="date" zone="local" value-zone="local"></datetime>
-    <button v-on:click="changeDate()">Change Date</button>
     <hr>
     <div v-for="consumption in filteredConsumptions">
       <p>Meal: {{ consumption.meal }}</p>
@@ -37,7 +36,7 @@ export default {
       currentConsumption: {},
       nutrientChartData: nutrientChartData,
       dailyValue: [],
-      date: this.getDate,
+      date: "",
       chart: null
     };
   },
@@ -45,6 +44,12 @@ export default {
     this.date = this.getDate;
     this.updateConsumptions();
     console.log(this.date);
+  },
+
+  watch: {
+    date: function(val) {
+      this.changeDate();
+    }
   },
 
   computed: {
@@ -73,8 +78,12 @@ export default {
     },
 
     changeDate() {
-      this.filterConsumptions();
-      this.updateChart();
+      if (this.consumptions !== []) {
+        this.filterConsumptions();
+      }
+      if (this.chart !== null) {
+        this.updateChart();
+      }
     },
 
     loadData() {
