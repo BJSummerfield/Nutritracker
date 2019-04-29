@@ -3,7 +3,7 @@
     <h1>Search Food</h1>
     <hr>
     <form v-on:submit.prevent="searchFood()">
-      <p>Date: <datetime type="date" v-model="date"></datetime></p>
+      <p>Date: <datetime v-model="date" zone="local" value-zone="local"></datetime></p>
        <div class="form-group">
             <label for="meals">Meal: </label>
               <select name="meal" v-model="meal">
@@ -49,18 +49,30 @@ export default {
       group: "",
       meals: ["Breakfast", "Lunch", "Dinner", "Snack"],
       meal: "",
-      date: ""
+      date: null
     };
   },
 
   created: function() {
+    this.date = this.getDate;
     axios.get("/api/groups").then(response => {
       this.groups = response.data;
-      console.log(this.groups)
+      console.log(this.groups);
     });
+  },
+  computed: {
+    getDate() {
+      const toTwoDigits = num => num < 10 ? '0' + num : num;
+      let today = new Date();
+      let year = today.getFullYear();
+      let month = toTwoDigits(today.getMonth() + 1);
+      let day = toTwoDigits(today.getDate() + 1);
+      return `${year}-${month}-${day}T00:00:00.000Z`;
+    }
   },
 
   methods: {
+    
     createConsumption: function(label) {
       console.log("Creating Consumption");
       console.log(label);
@@ -94,7 +106,7 @@ export default {
       console.log(params);
       axios.post("/api/consumptions", params).then(response => {
         console.log(response.data);
-        this.$router.push("/consumptions");
+        // this.$router.push("/consumptions");
       }).catch(error => {
         console.log(error.response.data.errors);
         this.errors = error.response.data.errors;

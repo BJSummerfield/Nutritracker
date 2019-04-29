@@ -16,6 +16,7 @@
         </div>
         <input type="submit" class="btn btn-primary" value="Submit">
       </form>
+      <p><a href="/signup">Sign up</a></p>
     </div>
   </div>
 </template>

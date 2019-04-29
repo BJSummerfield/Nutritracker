@@ -5,7 +5,7 @@
     </div>
     <h1>Your Meals</h1>
 
-    <datetime v-model="date" placeholder="Enter Date"></datetime>
+    <datetime v-model="date" zone="local" value-zone="local"></datetime>
     <button v-on:click="changeDate()">Change Date</button>
     <hr>
     <div v-for="consumption in filteredConsumptions">
@@ -37,20 +37,15 @@ export default {
       currentConsumption: {},
       nutrientChartData: nutrientChartData,
       dailyValue: [],
-      date: "dasdf"
+      date: this.getDate,
+      chart: null
     };
   },
   created: function() {
-    axios.get("/api/consumptions").then(response => {
-      this.consumptions = response.data;
-      this.date = this.getDate;
-      this.filterConsumptions();
-      this.loadData();
-      this.createChart('nutrientChart', this.nutrientChartData);
-    });
+    this.date = this.getDate;
+    this.updateConsumptions();
+    console.log(this.date);
   },
-
-
 
   computed: {
     getDate() {
@@ -58,17 +53,18 @@ export default {
       let today = new Date();
       let year = today.getFullYear();
       let month = toTwoDigits(today.getMonth() + 1);
-      let day = toTwoDigits(today.getDate());
+      let day = toTwoDigits(today.getDate() + 1);
       return `${year}-${month}-${day}T00:00:00.000Z`;
     },
   },
   
   methods: {
-
     updateConsumptions() {
-      axios.get("api/consumptions").then(response => {
+      axios.get("/api/consumptions").then(response => {
         this.consumptions = response.data;
-        this.filterConsumptions;
+        this.filterConsumptions();
+        this.loadData();
+        this.createChart('nutrientChart', this.nutrientChartData);
       });
     },
 
@@ -77,14 +73,13 @@ export default {
     },
 
     changeDate() {
-      console.log(this.date);
-      this.filteredConsumptions = this.consumptions.filter(consumption => consumption.date === this.date);
-      this.loadData();
-      this.nutrientChart.update;
+      this.filterConsumptions();
+      this.updateChart();
     },
 
     loadData() {
       console.log(this.filteredConsumptions);
+      this.dailyValue = [];
       var protein = 0;
       var sodium = 0;
       var energy = 0;
@@ -99,9 +94,14 @@ export default {
       this.nutrientChartData.data.datasets[0].data = this.dailyValue;
     },
 
+    updateChart() {
+      this.loadData();
+      this.chart.update();
+    },
+
     createChart(chartId, chartData) {
       const ctx = document.getElementById(chartId);
-      const myChart = new Chart(ctx, {
+      this.chart = new Chart(ctx, {
         type: chartData.type,
         data: chartData.data,
         options: chartData.options,
@@ -111,12 +111,9 @@ export default {
     deleteConsumption: function(theConsumption) {
       console.log('deleting the consumption...');
       console.log('api/consumptions/' + theConsumption.id);
-      axios.delete('api/consumptions/' + theConsumption.id).then(response => { 
-        axios.get("api/consumptions").then(response => {
-          this.consumptions = response.data;
-          this.filterConsumptions();
-          console.log();
-        });
+      axios.delete('api/consumptions/' + theConsumption.id).then(response => {
+        this.updateConsumptions();
+        this.updateChart();
       });
     },
   
