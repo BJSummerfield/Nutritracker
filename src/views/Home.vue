@@ -20,8 +20,7 @@ export default {
     };
   },
   mounted() {
-    this.planetChartData.data.labels = this.nutrients;
-    this.createChart('planet-chart', this.planetChartData);
+    this.$router.push("/login");
   },
   methods: {
     createChart(chartId, chartData) {

@@ -55,10 +55,7 @@ export default {
 
   created: function() {
     this.date = this.getDate;
-    axios.get("/api/groups").then(response => {
-      this.groups = response.data;
-      console.log(this.groups);
-    });
+    this.getGroups();
   },
   computed: {
     getDate() {
@@ -72,6 +69,13 @@ export default {
   },
 
   methods: {
+
+    getGroups() {
+      axios.get("/api/groups").then(response => {
+        this.groups = response.data;
+        console.log(this.groups);
+      });
+    },
     
     createConsumption: function(label) {
       console.log("Creating Consumption");
@@ -106,7 +110,10 @@ export default {
       console.log(params);
       axios.post("/api/consumptions", params).then(response => {
         console.log(response.data);
-        // this.$router.push("/consumptions");
+        this.foodSearch = "";
+        this.getGroups();
+        this.currentFood = {};
+        this.moreInfo();
       }).catch(error => {
         console.log(error.response.data.errors);
         this.errors = error.response.data.errors;
