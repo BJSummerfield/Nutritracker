@@ -53,14 +53,14 @@ export default {
   },
 
   computed: {
-    getDate() {
-      const toTwoDigits = num => num < 10 ? '0' + num : num;
-      let today = new Date();
-      let year = today.getFullYear();
-      let month = toTwoDigits(today.getMonth() + 1);
-      let day = toTwoDigits(today.getDate() + 1);
-      return `${year}-${month}-${day}T00:00:00.000Z`;
-    },
+    // getDate() {
+    //   const toTwoDigits = num => num < 10 ? '0' + num : num;
+    //   let today = new Date();
+    //   let year = today.getFullYear();
+    //   let month = toTwoDigits(today.getMonth() + 1);
+    //   let day = toTwoDigits(today.getDate() + 1);
+    //   return `${year}-${month}-${day}T00:00:00.000Z`;
+    // },
   },
   
   methods: {
