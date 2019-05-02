@@ -141,9 +141,12 @@ export default {
   .chart-container {
     position: relative;
     margin: auto;
-    /*height: 80vh;*/
+    /*padding: 80px;*/
+    /*height: 150vh;*/
     /*width: 80vw;*/
-    padding-top: 50px;
-    padding-bottom:25px;
+    padding-top: 80px;
+    padding-bottom:80px;
+    padding-left: 100px;
+    padding-right:100px;
   }
 </style>

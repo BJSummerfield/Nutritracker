@@ -39,7 +39,7 @@
               <h5> {{ food.food['desc']['name'] }}</h5>
               <div v-for="label in food.food['nutrients'][0]['measures']">
                 <div v-if="label && label.label">
-                  <p><button v-on:click="createConsumption(label.label)">{{ label.label }}</button></p> <!--Work here measure button -->
+                  <p><button v-on:click="createConsumption(label.label, food)">{{ label.label }}</button></p>
                 </div>
               </div>
             </div>
@@ -59,7 +59,6 @@ export default {
       foodSearch: "",
       groups: [],
       foods: [],
-      currentFood: {},
       errors: [],
       group: "",
       meals: ["Breakfast", "Lunch", "Dinner", "Snack"],
@@ -93,12 +92,13 @@ export default {
       });
     },
     
-    createConsumption: function(label) {
+    createConsumption: function(label, food) {
       console.log("Creating Consumption");
       console.log(label);
+      console.log(food.food['desc']['name']);
   
       var nutrientGrab = (nutrient) => {
-        var value =  this.currentFood.food.nutrients.filter(d => d.name === nutrient);
+        var value =  food.food.nutrients.filter(d => d.name === nutrient);
         return valueGrab(value);
       };
 
@@ -118,7 +118,7 @@ export default {
       var params = {
         meal: this.meal,
         date: this.date,
-        name: this.currentFood.food.desc.name,
+        name: food.food.desc.name,
         protein: protien[0].value,
         sodium: sodium[0].value,
         energy: energy[0].value         
@@ -127,21 +127,13 @@ export default {
       axios.post("/api/consumptions", params).then(response => {
         console.log(response.data);
         this.foodSearch = "";
+        this.foods = [];
         this.getGroups();
-        this.currentFood = {};
         this.moreInfo();
       }).catch(error => {
         console.log(error.response.data.errors);
         this.errors = error.response.data.errors;
       });
-    },
-
-    moreInfo: function(theFood) {
-      if (this.currentFood === theFood) {
-        this.currentFood = {};
-      } else {
-        this.currentFood = theFood;
-      }
     },
 
     searchFood: function(theFood) {
