@@ -4,8 +4,12 @@
     <canvas id="nutrientChart"></canvas>
   </div>
   <h1>Your Meals</h1>
-
-  <datetime v-model="date" zone="local" value-zone="local"></datetime>
+  <div class="row">
+    <div class="span2 offset6">
+       <label>Date: </label>
+  <datetime v-model="date" zone="local" value-zone="local" class="theme-black"></datetime>
+</div>
+</div>
   <hr>
   <div v-for="consumption in filteredConsumptions">
     <p>Meal: {{ consumption.meal }}</p>
@@ -53,14 +57,14 @@ export default {
   },
 
   computed: {
-    // getDate() {
-    //   const toTwoDigits = num => num < 10 ? '0' + num : num;
-    //   let today = new Date();
-    //   let year = today.getFullYear();
-    //   let month = toTwoDigits(today.getMonth() + 1);
-    //   let day = toTwoDigits(today.getDate() + 1);
-    //   return `${year}-${month}-${day}T00:00:00.000Z`;
-    // },
+    getDate() {
+      const toTwoDigits = num => num < 10 ? '0' + num : num;
+      let today = new Date();
+      let year = today.getFullYear();
+      let month = toTwoDigits(today.getMonth() + 1);
+      let day = toTwoDigits(today.getDate() + 1);
+      return `${year}-${month}-${day}T00:00:00.000Z`;
+    },
   },
   
   methods: {
@@ -137,16 +141,4 @@ export default {
 };
 </script>
 
-<style>
-  .chart-container {
-    position: relative;
-    margin: auto;
-    /*padding: 80px;*/
-    /*height: 150vh;*/
-    /*width: 80vw;*/
-    padding-top: 80px;
-    padding-bottom:80px;
-    padding-left: 100px;
-    padding-right:100px;
-  }
-</style>
+

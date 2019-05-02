@@ -21,7 +21,7 @@
             </div>
             <div class="span2 offset 5">
               <label>Date: </label>
-              <datetime v-model="date" zone="local" value-zone="local"></datetime>
+              <datetime v-model="date" zone="local" value-zone="local" class="theme-black"></datetime>
             </div>
             <div class="span2 offset5">
               <input type="submit" class="btn btn-primary" value="search">
@@ -153,3 +153,4 @@ export default {
   }
 };
 </script>
+
