@@ -1,5 +1,5 @@
 <template>
-  <section id="foodSearch" class="section orange">
+  <section id="services" class="section orange">
     <div class="container">
       <div class="blankdivider30">
       </div>
@@ -33,10 +33,10 @@
     <div class="container">
       <div class="row">
         <div v-for="food in foods">
-          <div class="span2 animated-fast flyIn">
+          <div class="span3 animated-fast flyIn">
             <div class="service-box">
               <img src="" alt="" />
-              <h5> {{ food.food['desc']['name'] }}</h5>
+              <h2> {{ food.food['desc']['name'] }}</h2>
               <div v-for="label in food.food['nutrients'][0]['measures']">
                 <div v-if="label && label.label">
                   <p><button v-on:click="createConsumption(label.label, food)">{{ label.label }}</button></p>
