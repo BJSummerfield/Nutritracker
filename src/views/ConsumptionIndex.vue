@@ -1,30 +1,33 @@
 <template>
   <section>
-  <div class="chart-container">
-    <canvas id="nutrientChart"></canvas>
-  </div>
-  <h1>Your Meals</h1>
-  <div class="row">
-    <div class="span2 offset6">
-       <label>Date: </label>
-  <datetime v-model="date" zone="local" value-zone="local" class="theme-black"></datetime>
-</div>
-</div>
-  <hr>
-  <div v-for="consumption in filteredConsumptions">
-    <p>Meal: {{ consumption.meal }}</p>
-    <p>Name: {{ consumption.name }}</p>
+    <!-- Chart -->
+    <div class="chart-container">
+      <canvas id="nutrientChart"></canvas>
+    </div>
+    <!-- datetime search -->
+    <h1>Your Meals</h1>
+
+    <div class="row">
+      <div class="span2 offset6">
+        <label>Date: </label>
+        <datetime v-model="date" zone="local" value-zone="local" class="theme-black"></datetime>
+      </div>
+    </div>
+        <!-- Consumption cards -->
+    <div v-for="consumption in filteredConsumptions">
+      <p>Meal: {{ consumption.meal }}</p>
+      <p>Name: {{ consumption.name }}</p>
     
-    <button v-on:click="moreInfo(consumption)">Values</button>
+      <button v-on:click="moreInfo(consumption)">Values</button>
       <div v-if="consumption === currentConsumption">
         <p>Protein: {{ consumption.protein }}</p>
         <p>Sodium: {{ consumption.sodium }}</p>
         <p>Calories: {{ consumption.energy }}</p>
         <button v-on:click="deleteConsumption(consumption)">Remove</button>
       </div>
-    <hr>
-  </div>
-</section>
+      <hr>
+    </div>
+  </section>
 </template>
 
 <script>
