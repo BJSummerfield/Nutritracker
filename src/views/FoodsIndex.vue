@@ -8,7 +8,7 @@
         <div class="form-group">
           <div class="row">
             <div class="span4 offset4">
-            <p>Name:</p> 
+            <label>Name:</label> 
             <input type="search" style="text-align:center;" v-model="foodSearch" placeholder="Search food">
             <label for="group">Groups: </label>
             <select name="group" v-model="group">
@@ -20,7 +20,7 @@
             </select>
             </div>
             <div class="span2 offset 5">
-              <p>Date: </p>
+              <label>Date: </label>
               <datetime v-model="date" zone="local" value-zone="local"></datetime>
             </div>
             <div class="span2 offset5">
@@ -33,16 +33,13 @@
     <div class="container">
       <div class="row">
         <div v-for="food in foods">
-          <div class="span3 animated flyIn">
-            <div @mouseover="hover = true" @mouseleave="hover = false" class="service-box">  
+          <div class="span2 animated-fast flyIn">
+            <div class="service-box">
+              <img src="" alt="" />
               <h5> {{ food.food['desc']['name'] }}</h5>
-              <button v-on:click="moreInfo(food)">Measures</button>
-                <div v-if="food === currentFood">
-                  <div v-for="label in food.food['nutrients'][0]['measures']">
-                    <div v-if="label && label.label">
-                      <p><button v-on:click="createConsumption(label.label)">{{ label.label }}</button></p> <!--Work here measure button -->
-                    </div>
-                  </div>
+              <div v-for="label in food.food['nutrients'][0]['measures']">
+                <div v-if="label && label.label">
+                  <p><button v-on:click="createConsumption(label.label)">{{ label.label }}</button></p> <!--Work here measure button -->
                 </div>
               </div>
             </div>
