@@ -159,6 +159,7 @@ input[type=text], input[type=submit], textarea {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
+	text-align: center;
 }
 input, button, select, textarea {
 	font-family:'Open Sans', Arial, sans-serif;

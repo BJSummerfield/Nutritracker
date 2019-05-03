@@ -1,16 +1,15 @@
 <template>
-  <section>
+  <section id="blog" class="section">
     <!-- Chart -->
     <div class="chart-container">
       <canvas id="nutrientChart"></canvas>
     </div>
     <!-- datetime search -->
     <h1>Your Meals</h1>
-
     <div class="row">
-      <div class="span2 offset6">
-        <label>Date: </label>
-        <datetime v-model="date" zone="local" value-zone="local" class="theme-black"></datetime>
+      <label>Date: </label>
+      <div class="span3 offset8">
+        <datetime v-model="date" zone="local" value-zone="local" class="theme-black" style="width:50%; display:block; margin: 0 auto;"></datetime>
       </div>
     </div>
         <!-- Consumption cards -->

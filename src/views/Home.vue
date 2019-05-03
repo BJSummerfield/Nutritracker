@@ -1,36 +1,97 @@
 <template>
-  <div class="home">
-    <div id="app">
-      <canvas id="planet-chart"></canvas>
+  <section id="blog" class="section">
+    <div class="container">
+      <h4>Our Blog</h4>
+      <!-- Three columns -->
+      <div class="row">
+        <div class="span3">
+          <div class="home-post">
+            <div class="post-image">
+              <img class="max-img" src="" alt="" />
+            </div>
+            <div class="entry-content">
+              <h5><strong><a href="#">New design trends</a></strong></h5>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+              </p>
+              <a href="#" class="more">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="span3">
+          <div class="home-post">
+            <div class="post-image">
+              <img class="max-img" src="img/blog/img2.jpg" alt="" />
+            </div>
+            <div class="post-meta">
+              <i class="icon-file icon-2x"></i>
+              <span class="date">June 19, 2013</span>
+              <span class="tags"><a href="#">Design</a>, <a href="#">News</a></span>
+            </div>
+            <div class="entry-content">
+              <h5><strong><a href="#">Retro is great</a></strong></h5>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+              </p>
+              <a href="#" class="more">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="span3">
+          <div class="home-post">
+            <div class="post-image">
+              <img class="max-img" src="img/blog/img3.jpg" alt="" />
+            </div>
+            <div class="post-meta">
+              <i class="icon-file icon-2x"></i>
+              <span class="date">June 22, 2013</span>
+              <span class="tags"><a href="#">Design</a>, <a href="#">Tips</a></span>
+            </div>
+            <div class="entry-content">
+              <h5><strong><a href="#">Isometric mockup</a></strong></h5>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+              </p>
+              <a href="#" class="more">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="span3">
+          <div class="home-post">
+            <div class="post-image">
+              <img class="max-img" src="img/blog/img4.jpg" alt="" />
+            </div>
+            <div class="post-meta">
+              <i class="icon-file icon-2x"></i>
+              <span class="date">June 27, 2013</span>
+              <span class="tags"><a href="#">News</a>, <a href="#">Tutorial</a></span>
+            </div>
+            <div class="entry-content">
+              <h5><strong><a href="#">Free icon set</a></strong></h5>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. &hellip;
+              </p>
+              <a href="#" class="more">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blankdivider30"></div>
+      <div class="aligncenter">
+        <a href="#" class="btn btn-large btn-theme">More blog post</a>
+      </div>
     </div>
-
-  </div>
+  </section>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-import Chart from 'chart.js';
-import planetChartData from '../chart-data.js';
 export default {
   data: function() {
     return {
-      planetChartData: planetChartData,
-      nutrients: ["protien", "stuff", 'Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn']
     };
   },
-  mounted() {
-    this.$router.push("/login");
-  },
   methods: {
-    createChart(chartId, chartData) {
-      const ctx = document.getElementById(chartId);
-      const myChart = new Chart(ctx, {
-        type: chartData.type,
-        data: chartData.data,
-        options: chartData.options,
-      });
-    }
   }
 };
 </script>
