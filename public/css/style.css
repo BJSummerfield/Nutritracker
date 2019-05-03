@@ -510,7 +510,7 @@ section.spacer {
 	background:#ffe873;
 }
 .spacer.orange,.section.orange {
-	background:#f36f36;
+	background:#1bac91;
 }
 
 section.spacer.bg2 {
@@ -767,6 +767,7 @@ section#services .service-box {
 	-o-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
+	color: 545454;
 }
 section#services .span3:hover {
 	background:#e3e3e3;
@@ -778,8 +779,13 @@ section#services .service-box h2 {
 }
 
 section#services.section.orange .service-box:hover {
-	background:#f36518;
+	background:#43413e;
 }
+
+section#services.section.orange .service-box{
+	background:#09828c;
+}
+
 
 
 /* === section blog === */

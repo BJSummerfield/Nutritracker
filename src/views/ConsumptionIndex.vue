@@ -8,23 +8,64 @@
     <h1>Your Meals</h1>
     <div class="row">
       <label>Date: </label>
-      <div class="span3 offset8">
+      <div class="span3 offset5">
         <datetime v-model="date" zone="local" value-zone="local" class="theme-black" style="width:50%; display:block; margin: 0 auto;"></datetime>
       </div>
     </div>
         <!-- Consumption cards -->
-    <div v-for="consumption in filteredConsumptions">
-      <p>Meal: {{ consumption.meal }}</p>
-      <p>Name: {{ consumption.name }}</p>
-    
-      <button v-on:click="moreInfo(consumption)">Values</button>
-      <div v-if="consumption === currentConsumption">
-        <p>Protein: {{ consumption.protein }}</p>
-        <p>Sodium: {{ consumption.sodium }}</p>
-        <p>Calories: {{ consumption.energy }}</p>
-        <button v-on:click="deleteConsumption(consumption)">Remove</button>
+    <div class="container">
+      <div class="row">
+        <div id="filters" class="span12">
+          <ul class="clearfix">
+            <li>
+              <a href="#!" v-on:click="sortFilter('')">
+                <h5>All</h5>
+              </a>
+            </li>
+            <li>
+              <a href="#!" v-on:click="sortFilter('Breakfast')">
+                <h5>Breakfast</h5>
+              </a>
+            </li>
+            <li>
+              <a href="#!" v-on:click="sortFilter('Lunch')">
+                <h5>Lunch</h5>
+              </a>
+            </li>
+            <li>
+              <a href="#!" v-on:click="sortFilter('Dinner')">
+                <h5>Dinner</h5>
+              </a>
+            </li>
+            <li>
+              <a href="#!" v-on:click="sortFilter('Snacks')">
+                <h5>Snacks</h5>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <hr>
+      
+  
+   
+      <!-- Three columns -->
+        <transition-group class="row" appear enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
+          <div v-for="(consumption, index)  in filterBy(filteredConsumptions, sortTerm)" :key="index">
+            <div class="span3">
+              <div class="home-post">
+                <div class="entry-content">
+                  <h5 v-on:click="moreInfo(consumption)"><strong>{{ consumption.name }}</strong></h5>
+                  <div v-if="consumption === currentConsumption">
+                    <p>Protein: {{ consumption.protein }}</p>
+                    <p>Sodium: {{ consumption.sodium }}</p>
+                    <p>Calories: {{ consumption.energy }}</p>
+                    <button v-on:click="deleteConsumption(consumption)">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </transition-group>
     </div>
   </section>
 </template>
@@ -34,7 +75,9 @@ import Chart from 'chart.js';
 import nutrientChartData from '../chart-data.js';
 import axios from "axios";
 import Vue from 'vue';
+import Vue2Filters from 'vue2-filters';
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       consumptions: [],
@@ -43,7 +86,8 @@ export default {
       nutrientChartData: nutrientChartData,
       dailyValue: [],
       date: "",
-      chart: null
+      chart: null,
+      sortTerm: ""
     };
   },
   created: function() {
@@ -70,6 +114,11 @@ export default {
   },
   
   methods: {
+    sortFilter(sortWord) {
+      this.sortTerm = sortWord;
+      console.log(this.sortTerm);
+    },
+
     updateConsumptions() {
       axios.get("/api/consumptions").then(response => {
         this.consumptions = response.data;

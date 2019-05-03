@@ -31,11 +31,10 @@
       </form>
     </div>
     <div class="container">
-      <div class="row">
-        <div v-for="food in foods">
+      <transition-group class="row" appear enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
+        <div v-for="(food, index) in foods" :key="index">
           <div class="span3 animated-fast flyIn">
             <div class="service-box">
-              <img src="" alt="" />
               <h2> {{ food.food['desc']['name'] }}</h2>
               <div v-for="label in food.food['nutrients'][0]['measures']">
                 <div v-if="label && label.label">
@@ -45,7 +44,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </transition-group>
     </div>
   </section>
 </template>
