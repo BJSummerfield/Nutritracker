@@ -48,10 +48,9 @@ CONTENTS:
 .chart-container {
   position: relative;
   margin: auto;
-  padding-top: 80px;
-  padding-bottom:80px;
-  padding-left: 100px;
-  padding-right:100px;
+  padding-top:0%;
+  padding-left:10%;
+  padding-right:10%;
 }
 
 /* Calander css */
@@ -152,7 +151,7 @@ a.scrollup i:hover {
 /*---------- forms ----------*/
 
 input[type=text], input[type=submit], textarea {
-	width: 100%;
+	/*width: 100%;*/
 	padding: 0.5em;
 	font-size: 1em;
 	margin-bottom: 1.5em;
@@ -468,7 +467,7 @@ header .logo {
 
 
 section.section {
-	padding: 100px 0 80px;
+	padding: 12% 80px;
 }
 section.section h4 {
 	text-align: center;

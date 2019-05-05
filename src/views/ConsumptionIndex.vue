@@ -6,12 +6,9 @@
     </div>
     <!-- datetime search -->
     <h1>Your Meals</h1>
-    <div class="row">
       <label>Date: </label>
-      <div class="span3 offset5">
-        <datetime v-model="date" zone="local" value-zone="local" class="theme-black" style="width:50%; display:block; margin: 0 auto;"></datetime>
-      </div>
-    </div>
+        <datetime v-model="date" zone="local" value-zone="local" class="theme-black" style="width:50%; display:inline; margin: 0 auto;"></datetime>
+
         <!-- Consumption cards -->
     <div class="container">
       <div class="row">
@@ -51,7 +48,7 @@
       <!-- Three columns -->
         <transition-group class="row" appear enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
           <div v-for="consumption, index in filteredConsumptions" :key="index">
-            <div class="span3">
+            <div class="span2">
               <div class="home-post">
                 <div class="entry-content">
                   <h5 v-on:click="moreInfo(consumption)"><strong>{{ consumption.name }}</strong></h5>

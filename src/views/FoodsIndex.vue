@@ -32,8 +32,8 @@
     </div>
     <div class="container">
       <transition-group class="row" appear enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
-        <div v-for="(food, index) in foods" :key="index">
-          <div class="span3 animated-fast flyIn">
+        <div v-for="(food, theKey) in foods" :key="theKey">
+          <div class="span2">
             <div class="service-box">
               <h2> {{ food.food['desc']['name'] }}</h2>
               <div v-for="label in food.food['nutrients'][0]['measures']">
@@ -63,7 +63,6 @@ export default {
       meals: ["Breakfast", "Lunch", "Dinner", "Snack"],
       meal: "",
       date: null,
-      hover: false
     };
   },
 

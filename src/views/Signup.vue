@@ -1,8 +1,8 @@
 <template>
   <section id="signup" class="section green">
     <div class="container">
-      <div class="blankdivider30">
-      </div>
+      <!-- <div class="blankdivider30"> -->
+      <!-- </div> -->
       <div class="row">
         <div class="cform" id="contact-form">
           <form v-on:submit.prevent="submit()">
