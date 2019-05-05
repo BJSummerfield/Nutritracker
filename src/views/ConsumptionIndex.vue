@@ -18,7 +18,7 @@
         <div id="filters" class="span12">
           <ul class="clearfix">
             <li>
-              <a href="#!" v-on:click="sortFilter('')">
+              <a href="#!" v-on:click="sortFilter('All')">
                 <h5>All</h5>
               </a>
             </li>
@@ -38,7 +38,7 @@
               </a>
             </li>
             <li>
-              <a href="#!" v-on:click="sortFilter('Snacks')">
+              <a href="#!" v-on:click="sortFilter('Snack')">
                 <h5>Snacks</h5>
               </a>
             </li>
@@ -50,7 +50,7 @@
    
       <!-- Three columns -->
         <transition-group class="row" appear enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
-          <div v-for="(consumption, index)  in filterBy(filteredConsumptions, sortTerm)" :key="index">
+          <div v-for="consumption, index in filteredConsumptions" :key="index">
             <div class="span3">
               <div class="home-post">
                 <div class="entry-content">
@@ -75,9 +75,7 @@ import Chart from 'chart.js';
 import nutrientChartData from '../chart-data.js';
 import axios from "axios";
 import Vue from 'vue';
-import Vue2Filters from 'vue2-filters';
 export default {
-  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       consumptions: [],
@@ -87,7 +85,7 @@ export default {
       dailyValue: [],
       date: "",
       chart: null,
-      sortTerm: ""
+      sortTerm: "All"
     };
   },
   created: function() {
@@ -98,7 +96,11 @@ export default {
 
   watch: {
     date: function(val) {
-      this.changeDate();
+      this.changeFilter();
+    },
+
+    sortTerm:function(val) {
+      this.changeFilter();
     }
   },
 
@@ -122,19 +124,22 @@ export default {
     updateConsumptions() {
       axios.get("/api/consumptions").then(response => {
         this.consumptions = response.data;
-        this.filterConsumptions();
+        this.filterConsumption();
         this.loadData();
         this.createChart('nutrientChart', this.nutrientChartData);
       });
     },
 
-    filterConsumptions() {
+    filterConsumption() {
       this.filteredConsumptions = this.consumptions.filter(consumption => consumption.date === this.date);
+      if (this.sortTerm !== "All") {
+        this.filteredConsumptions = this.filteredConsumptions.filter(consumption => consumption.meal === this.sortTerm);
+      }
     },
 
-    changeDate() {
+    changeFilter() {
       if (this.consumptions !== []) {
-        this.filterConsumptions();
+        this.filterConsumption();
       }
       if (this.chart !== null) {
         this.updateChart();
