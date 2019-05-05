@@ -3,9 +3,10 @@ import Router from 'vue-router';
 import Signup from './views/Signup.vue';
 import Login from './views/Login.vue';
 import Logout from './views/Logout.vue';
-import ConsumptionIndex from './views/ConsumptionIndex.vue';
+import Consumption from './views/Consumption.vue';
 import Home from './views/Home.vue';
-import FoodsIndex from './views/FoodsIndex.vue';
+import Foods from './views/Foods.vue';
+import Diet from './views/Diet.vue';
 
 Vue.use(Router);
 
@@ -31,12 +32,17 @@ export default new Router({
     { 
       path: "/consumptions",
       name: "index",
-      component: ConsumptionIndex  
+      component: Consumption  
     },
     { 
       path: "/foods",
       name: "foods",
-      component: FoodsIndex  
+      component: Foods  
+    },    
+    { 
+      path: "/diet",
+      name: "diet",
+      component: Diet  
     },  
     { 
       path: "/",

@@ -1,13 +1,33 @@
 export const nutrientChartData = {
   type: 'bar',
   data: {
-    labels: ["Protein", "Sodium", "Calories"],
+    labels: [
+      "Calories - kcal",
+      "Total - Fat g",
+      "Saturated - Fat g",
+      "Trans - Fat g",
+      "Cholesterol - mg",
+      "Sodium - mg",
+      "Total - Carbs g",
+      "Dietary - Fiber g",
+      "Sugars - g",
+      "Protein - g",
+      "Vitamin A - mg",
+      "Vitamin C - mg",
+      "Calcium - mg",
+      "Iron - mg"],
     datasets: [
       { // one line graph
         label: 'Current Values',
-        data: [80,75,1500],
+        data: [],
         backgroundColor: [
           'rgba(54,73,93,.5)', // Blue
+          'rgba(54,73,93,.5)',
+          'rgba(54,73,93,.5)',
+          'rgba(54,73,93,.5)',
+          'rgba(54,73,93,.5)',
+          'rgba(54,73,93,.5)',
+          'rgba(54,73,93,.5)',
           'rgba(54,73,93,.5)',
           'rgba(54,73,93,.5)',
           'rgba(54,73,93,.5)',
@@ -25,12 +45,18 @@ export const nutrientChartData = {
           '#36495d',
           '#36495d',
           '#36495d',
+          '#36495d',
+          '#36495d',
+          '#36495d',
+          '#36495d',
+          '#36495d',
+          '#36495d',
         ],
         borderWidth: 3
       },
       { // another line graph
         label: 'Target Values',
-        data: [70, 400, 2300],
+        data: [2000, 65, 22, 2, 300, 2300, 300, 30, 33, 50, 900, 90, 1000, 8],
         backgroundColor: [
           // 'rgba(71, 183,132,.5)',
           // 'rgba(71, 183,132,.5)',

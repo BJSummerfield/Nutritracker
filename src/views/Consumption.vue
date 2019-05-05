@@ -55,7 +55,18 @@
                   <div v-if="consumption === currentConsumption">
                     <p>Protein: {{ consumption.protein }}</p>
                     <p>Sodium: {{ consumption.sodium }}</p>
-                    <p>Calories: {{ consumption.energy }}</p>
+                    <p>Energy: {{ consumption.energy }}</p>
+                    <p>Total Fat: {{ consumption.total_fat }}</p>
+                    <p>Saturated Fat: {{ consumption.saturated_fat }}</p>
+                    <p>Trans Fat: {{ consumption.trans_fat }}</p>
+                    <p>Cholesterol: {{ consumption.cholesterol }}</p>
+                    <p>Total Carbs: {{ consumption.total_carbs }}</p>
+                    <p>Dietary Fiber: {{ consumption.dietary_fiber }}</p>
+                    <p>Sugars: {{ consumption.sugars }}</p>
+                    <p>Vitamin A: {{ consumption.vitamin_a }}</p>
+                    <p>Vitamin C: {{ consumption.vitamin_c }}</p>
+                    <p>Calcium: {{ consumption.calcium }}</p>
+                    <p>Iron: {{ consumption.iron }}</p>
                     <button v-on:click="deleteConsumption(consumption)">Remove</button>
                   </div>
                 </div>
@@ -71,7 +82,7 @@
 import Chart from 'chart.js';
 import nutrientChartData from '../chart-data.js';
 import axios from "axios";
-import Vue from 'vue';
+// import Vue from 'vue';
 export default {
   data: function() {
     return {
@@ -82,10 +93,15 @@ export default {
       dailyValue: [],
       date: "",
       chart: null,
-      sortTerm: "All"
+      sortTerm: "All",
+      diet: []
     };
   },
   created: function() {
+    axios.get("/api/diets").then(response => {
+      this.diet = response.data;
+    });
+    console.log(this.diet);
     this.date = this.getDate;
     this.updateConsumptions();
     console.log(this.date);
@@ -149,14 +165,47 @@ export default {
       var protein = 0;
       var sodium = 0;
       var energy = 0;
+      var totalFat = 0;
+      var saturatedFat = 0;
+      var transFat = 0;
+      var cholesterol = 0;
+      var totalCarbs = 0;
+      var dietaryFiber = 0;
+      var sugars = 0;
+      var vitaminA = 0;
+      var vitaminC = 0;
+      var calcium = 0;
+      var iron = 0;
       this.filteredConsumptions.forEach(function(consumption) {
         protein += consumption.protein;
         sodium += consumption.sodium;
         energy += consumption.energy;
+        totalFat += consumption.total_fat;
+        saturatedFat += consumption.saturated_fat;
+        transFat += consumption.trans_fat;
+        cholesterol += consumption.cholesterol;
+        totalCarbs += consumption.total_carbs;
+        dietaryFiber += consumption.dietary_fiber;
+        sugars += consumption.sugars;
+        vitaminA += consumption.vitamin_a;
+        vitaminC += consumption.vitamin_c;
+        calcium += consumption.calcium;
+        iron += consumption.iron;
       }),
-      this.dailyValue.push(protein),
-      this.dailyValue.push(sodium),
       this.dailyValue.push(energy),
+      this.dailyValue.push(totalFat),
+      this.dailyValue.push(saturatedFat),
+      this.dailyValue.push(transFat),
+      this.dailyValue.push(cholesterol),
+      this.dailyValue.push(sodium),
+      this.dailyValue.push(totalCarbs),
+      this.dailyValue.push(dietaryFiber),
+      this.dailyValue.push(sugars),
+      this.dailyValue.push(protein),      
+      this.dailyValue.push(vitaminA),
+      this.dailyValue.push(vitaminC),
+      this.dailyValue.push(calcium),
+      this.dailyValue.push(iron),      
       this.nutrientChartData.data.datasets[0].data = this.dailyValue;
     },
 

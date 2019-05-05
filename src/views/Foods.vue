@@ -96,30 +96,79 @@ export default {
       console.log(food.food['desc']['name']);
   
       var nutrientGrab = (nutrient) => {
-        var value =  food.food.nutrients.filter(d => d.name === nutrient);
-        return valueGrab(value);
+        try {
+          var value =  food.food.nutrients.filter(d => d.name === nutrient);
+          return valueGrab(value);
+        } catch (error) {
+          return "0";
+        }
       };
 
       var valueGrab = (nutrient) => {
-        return nutrient[0].measures.filter(d => d && d.label === label);
+        var value = nutrient[0].measures.filter(d => d && d.label === label);
+        return value[0].value;
       };
 
-      var energy = nutrientGrab("Energy");
+      var protein = nutrientGrab("Protein");
+      console.log(protein);
+
+      var sodium = nutrientGrab('Sodium, Na');
+      console.log(sodium);
+
+      var energy = nutrientGrab('Energy');
       console.log(energy);
 
-      var protien = nutrientGrab("Protein");
-      console.log(protien);
+      var totalFat = nutrientGrab('Total lipid (fat)');
+      console.log(totalFat);
 
-      var sodium = nutrientGrab("Sodium, Na");
-      console.log(sodium);
-    
+      var saturatedFat = nutrientGrab('Fatty acids, total saturated');
+      console.log(saturatedFat);
+
+      var transFat = nutrientGrab('Fatty acids, total trans');
+      console.log(transFat);
+
+      var cholesterol = nutrientGrab('Cholesterol');
+      console.log(cholesterol);
+
+      var totalCarbs = nutrientGrab('Carbohydrate, by difference');
+      console.log(totalCarbs);
+
+      var dietaryFiber = nutrientGrab('Fiber, total dietary');
+      console.log(dietaryFiber);
+
+      var sugars = nutrientGrab('Sugars, total');
+      console.log(sugars);
+
+      var vitaminA = nutrientGrab('Vitamin A, IU');
+      console.log(vitaminA);
+
+      var vitaminC = nutrientGrab('Vitamin C, total ascorbic acid');
+      console.log(vitaminC);
+
+      var calcium = nutrientGrab('Calcium, Ca');
+      console.log(calcium);
+
+      var iron = nutrientGrab('Iron, Fe');
+      console.log(iron);
+
       var params = {
         meal: this.meal,
         date: this.date,
         name: food.food.desc.name,
-        protein: protien[0].value,
-        sodium: sodium[0].value,
-        energy: energy[0].value         
+        energy: energy,
+        total_fat: totalFat,
+        saturated_fat: saturatedFat,
+        trans_fat: transFat,
+        cholesterol: cholesterol, 
+        sodium: sodium, 
+        total_carbs: totalCarbs, 
+        dietary_fiber: dietaryFiber, 
+        sugars: sugars, 
+        protein: protein, 
+        vitamin_a: vitaminA, 
+        vitamin_c: vitaminC, 
+        calcium: calcium, 
+        iron: iron          
       };
       console.log(params);
       axios.post("/api/consumptions", params).then(response => {
@@ -129,8 +178,8 @@ export default {
         this.getGroups();
         this.moreInfo();
       }).catch(error => {
-        console.log(error.response.data.errors);
         this.errors = error.response.data.errors;
+        console.log(error.response.data.errors);
       });
     },
 
