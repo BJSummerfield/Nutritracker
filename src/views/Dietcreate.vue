@@ -8,45 +8,45 @@
             <div class="row">
             	<div class="span3">
 	            	<p>Calories</p>
-	            	<input type="text" class="form-control" v-model="energy" value="2000">
+	            	<input type="text" class="form-control" v-model="energy">
 								<p>Total Fat</p>
-								<input type="text" class="form-control" v-model="total_fat" value="65">
+								<input type="text" class="form-control" v-model="total_fat">
 							</div>
 							<div class="span3">
 								<p>Saturated Fat</p>
-								<input type="text" class="form-control" v-model="saturated_fat" value="22">
+								<input type="text" class="form-control" v-model="saturated_fat">
 								<p>Trans Fat</p>
-								<input type="text" class="form-control" v-model="trans_fat" value="2">
+								<input type="text" class="form-control" v-model="trans_fat">
 							</div>
 							<div class="span3">
 								<p>Cholesterol</p>
-								<input type="text" class="form-control" v-model="cholesterol" value="300">
+								<input type="text" class="form-control" v-model="cholesterol">
 								<p>Sodium</p>
-								<input type="text" class="form-control" v-model="sodium" value="2300">
+								<input type="text" class="form-control" v-model="sodium">
 							</div>
 							<div class="span3">
 								<p>Total Carbs</p>
-								<input type="text" class="form-control" v-model="total_carbs" value="300">
+								<input type="text" class="form-control" v-model="total_carbs">
 								<p>Dietary Fiber</p>
-								<input type="text" class="form-control" v-model="dietary_fiber" value="30">
+								<input type="text" class="form-control" v-model="dietary_fiber">
 							</div>
 							<div class="span3">
 								<p>Sugars</p>
-								<input type="text" class="form-control" v-model="sugars" value="33">
+								<input type="text" class="form-control" v-model="sugars">
 								<p>Protein</p>
-								<input type="text" class="form-control" v-model="protein" value="50">
+								<input type="text" class="form-control" v-model="protein">
 							</div>
 							<div class="span3">
 								<p>Vitamin_a</p>
-								<input type="text" class="form-control" v-model="vitamin_a" value="900">
+								<input type="text" class="form-control" v-model="vitamin_a">
 								<p>Vitamin_c</p>
-								<input type="text" class="form-control" v-model="vitamin_c" value="90">
+								<input type="text" class="form-control" v-model="vitamin_c">
 							</div>
 							<div class="span3">
 								<p>Calcium</p>
-								<input type="text" class="form-control" v-model="calcium" value="1000">
+								<input type="text" class="form-control" v-model="calcium">
 								<p>Iron</p>
-								<input type="text" class="form-control" v-model="iron" value="8">
+								<input type="text" class="form-control" v-model="iron">
 							</div>
 						</div>
 						<input type="submit" class="btn btn-primary" value="Submit">
@@ -63,22 +63,23 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      energy: "",
-      total_fat: "",
-      saturated_fat: "",
-      trans_fat: "",
-      cholesterol: "", 
-      sodium: "", 
-      total_carbs: "", 
-      dietary_fiber: "", 
-      sugars: "", 
-      protein: "", 
-      vitamin_a: "", 
-      vitamin_c: "", 
-      calcium: "", 
-      iron: ""
+      energy: "2000",
+      total_fat: "65",
+      saturated_fat: "22",
+      trans_fat: "2",
+      cholesterol: "300", 
+      sodium: "2300", 
+      total_carbs: "300", 
+      dietary_fiber: "30", 
+      sugars: "33", 
+      protein: "50", 
+      vitamin_a: "900", 
+      vitamin_c: "90", 
+      calcium: "1000", 
+      iron: "8",
     };
   },
+
   methods: {
     submit: function() {
       var params = {
@@ -105,7 +106,7 @@ export default {
         .catch(error => {
           this.errors = error.response.data.errors;
         });
+      }
     }
-  }
-};
+  };
 </script>

@@ -1,8 +1,8 @@
 <template>
   <section id="signup" class="section green">
     <div class="container">
-      <!-- <div class="blankdivider30"> -->
-      <!-- </div> -->
+      <div class="blankdivider30">
+      </div>
       <div class="row">
         <div class="cform" id="contact-form">
           <form v-on:submit.prevent="submit()">
@@ -10,9 +10,6 @@
             <ul>
               <li class="text-danger" v-for="error in errors">{{ error }}</li>
             </ul>
-            <div class="email">
-              <input type="email" class="form-control" v-model="name" placeholder="Name">
-            </div>
             <div class="email">
               <input type="email" class="form-control" v-model="email" placeholder="Email">
             </div>
@@ -56,7 +53,7 @@ export default {
       axios
         .post("/api/users", params)
         .then(response => {
-          this.$router.push("/login");
+          this.$router.push("/diet/create");
         })
         .catch(error => {
           this.errors = error.response.data.errors;

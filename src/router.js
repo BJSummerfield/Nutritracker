@@ -6,7 +6,8 @@ import Logout from './views/Logout.vue';
 import Consumption from './views/Consumption.vue';
 import Home from './views/Home.vue';
 import Foods from './views/Foods.vue';
-import Diet from './views/Diet.vue';
+import Dietcreate from './views/Dietcreate.vue';
+import Dietupdate from './views/Dietupdate.vue';
 
 Vue.use(Router);
 
@@ -40,9 +41,14 @@ export default new Router({
       component: Foods  
     },    
     { 
-      path: "/diet",
+      path: "/diet/create",
       name: "diet",
-      component: Diet  
+      component: Dietcreate       
+    }, 
+    {
+      path: "/diet",
+      name: "dietupdate",
+      component: Dietupdate  
     },  
     { 
       path: "/",
