@@ -14,8 +14,8 @@
                 <li><a title="signup" href="/signup">Signup</a></li>
                 <li><a title="login" href="/login">Login</a></li>
                 <li><a title="logout" href="/logout">Logout</a></li>
-                <li><a title="foods" href="/foods">Foods Search</a></li>    
                 <li><a title="foods" href="/diet">Diet Customization</a></li>
+                <li><a title="foods" href="/foods">Foods Search</a></li>    
                 <li><a title="consumptions" href="/consumptions">Your Values</a></li>
               </ul>
             </nav>

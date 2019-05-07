@@ -24,6 +24,9 @@
             </div>
           </form>
         </div>
+        <div v-for="error in errors">
+          <h1>{{error}}</h1>
+        </div>
       </div>
     </div>
   </section>
@@ -35,7 +38,6 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      name: "",
       email: "",
       password: "",
       passwordConfirmation: "",
@@ -45,7 +47,6 @@ export default {
   methods: {
     submit: function() {
       var params = {
-        name: this.name,
         email: this.email,
         password: this.password,
         password_confirmation: this.passwordConfirmation
@@ -53,7 +54,14 @@ export default {
       axios
         .post("/api/users", params)
         .then(response => {
-          this.$router.push("/diet/create");
+          axios
+            .post("/api/sessions", params)
+            .then(response => {
+              axios.defaults.headers.common["Authorization"] =
+            "Bearer " + response.data.jwt;
+              localStorage.setItem("jwt", response.data.jwt);
+              this.$router.push("/diet/create");
+            });
         })
         .catch(error => {
           this.errors = error.response.data.errors;
