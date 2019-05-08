@@ -31,7 +31,7 @@
       </form>
     </div>
     <div v-for="error in errors">
-      <h3>{{error}}</h3>
+      <h4>{{error}}</h4>
     </div>
     <div class="container">
       <transition-group class="row" appear enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">

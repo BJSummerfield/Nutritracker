@@ -4,7 +4,7 @@
       <div class="row">
         <div class="cform" id="contact-form">
           <form v-on:submit.prevent="submit()">
-            <h4>Diet Customization</h4>
+            <h4>Default values are based on a 2000 calorie diet</h4>
             <div class="row">
             	<div class="span3">
 	            	<p>Calories</p>
@@ -55,7 +55,7 @@
       </div>
     </div>
     <div v-for="error in errors">
-      <h3>{{error}}</h3>
+      <h4>{{error}}</h4>
     </div>
   </section>
 </template>

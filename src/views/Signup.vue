@@ -25,7 +25,7 @@
           </form>
         </div>
         <div v-for="error in errors">
-          <h1>{{error}}</h1>
+          <h4>{{error}}</h4>
         </div>
       </div>
     </div>

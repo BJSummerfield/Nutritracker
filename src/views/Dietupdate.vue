@@ -55,7 +55,7 @@
       </div>
     </div>
     <div v-for="error in errors">
-    	<h3>{{error}}</h3>
+    	<h4>{{error}}</h4>
     </div>
   </section>
 </template>

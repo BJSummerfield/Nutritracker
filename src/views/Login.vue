@@ -21,6 +21,9 @@
               <input type="submit" class="btn btn-primary" value="Submit">
             </div>
           </form>
+          <div v-for="error in errors">
+            <h4>{{error}}</h4>
+          </div>
         </div>
       </div>
       <div class="blankdivider30">
