@@ -41,7 +41,7 @@
               <h2> {{ food.food['desc']['name'] }}</h2>
               <div v-for="label in food.food['nutrients'][0]['measures']">
                 <div v-if="label && label.label">
-                  <p><button v-on:click="createConsumption(label.label, food)">{{ label.label }}</button></p>
+                  <p><button v-on:click="createConsumption(label.label, food)">{{ label.qty }} {{label.label}}</button></p>
                 </div>
               </div>
             </div>
