@@ -58,7 +58,7 @@
                     <p>Energy: {{ consumption.energy }}</p>
                     <p>Total Fat: {{ consumption.total_fat }}</p>
                     <p>Saturated Fat: {{ consumption.saturated_fat }}</p>
-                    <p>Trans Fat: {{ consumption.trans_fat }}</p>
+                    <!-- <p>Trans Fat: {{ consumption.trans_fat }}</p> -->
                     <p>Cholesterol: {{ consumption.cholesterol }}</p>
                     <p>Total Carbs: {{ consumption.total_carbs }}</p>
                     <p>Dietary Fiber: {{ consumption.dietary_fiber }}</p>
@@ -102,7 +102,7 @@ export default {
     axios.get("/api/diets").then(response => {
       this.diet = response.data;
       console.log(this.diet);
-      this.loadTarget();
+      // this.loadTarget();
       this.updateConsumptions();
       this.createChart('nutrientChart', this.nutrientChartData);
     });
@@ -217,20 +217,20 @@ export default {
         calcium += consumption.calcium;
         iron += consumption.iron;
       }),
-      this.dailyValue.push(energy),
-      this.dailyValue.push(totalFat),
-      this.dailyValue.push(saturatedFat),
-      this.dailyValue.push(transFat),
-      this.dailyValue.push(cholesterol),
-      this.dailyValue.push(sodium),
-      this.dailyValue.push(totalCarbs),
-      this.dailyValue.push(dietaryFiber),
-      this.dailyValue.push(sugars),
-      this.dailyValue.push(protein),      
-      this.dailyValue.push(vitaminA),
-      this.dailyValue.push(vitaminC),
-      this.dailyValue.push(calcium),
-      this.dailyValue.push(iron),      
+      this.dailyValue.push(energy*100/this.diet.energy),
+      this.dailyValue.push(totalFat*100/this.diet.total_fat),
+      this.dailyValue.push(saturatedFat*100/this.diet.saturated_fat),
+      // this.dailyValue.push(transFat*100/this.diet.trans_fat),
+      this.dailyValue.push(cholesterol*100/this.diet.cholesterol),
+      this.dailyValue.push(sodium*100/this.diet.sodium),
+      this.dailyValue.push(totalCarbs*100/this.diet.total_carbs),
+      this.dailyValue.push(dietaryFiber*100/this.diet.dietary_fiber),
+      this.dailyValue.push(sugars*100/this.diet.sugars),
+      this.dailyValue.push(protein*100/this.diet.protein),      
+      this.dailyValue.push(vitaminA*100/this.diet.vitamin_a),
+      this.dailyValue.push(vitaminC*100/this.diet.vitamin_c),
+      this.dailyValue.push(calcium*100/this.diet.calcium),
+      this.dailyValue.push(iron*100/this.diet.iron),      
       this.nutrientChartData.data.datasets[0].data = this.dailyValue;
     },
 

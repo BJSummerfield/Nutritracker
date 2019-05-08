@@ -5,7 +5,7 @@ export const nutrientChartData = {
       "Calories - kcal",
       "Total - Fat g",
       "Saturated - Fat g",
-      "Trans - Fat g",
+      // "Trans - Fat g",
       "Cholesterol - mg",
       "Sodium - mg",
       "Total - Carbs g",
@@ -18,7 +18,7 @@ export const nutrientChartData = {
       "Iron - mg"],
     datasets: [
       { // one line graph
-        label: 'Current Values',
+        label: 'Percentage of Daily Goal',
         data: [],
         backgroundColor: [
           'rgba(54,73,93,.5)', // Blue
@@ -53,20 +53,8 @@ export const nutrientChartData = {
           '#36495d',
         ],
         borderWidth: 3
-      },
-      { // another line graph
-        label: 'Target Values',
-        data: [],
-        backgroundColor: [
-          // 'rgba(71, 183,132,.5)',
-          // 'rgba(71, 183,132,.5)',
-          // 'rgba(71, 183,132,.5)' // Green
-        ],
-        borderColor: [
-          // '#47b784',
-        ],
-        borderWidth: 3
       }
+   
     ]
   },
   options: {
