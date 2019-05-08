@@ -54,6 +54,9 @@
         </div>
       </div>
     </div>
+    <div v-for="error in errors">
+      <h3>{{error}}</h3>
+    </div>
   </section>
 </template>
 
@@ -77,6 +80,7 @@ export default {
       vitamin_c: "90", 
       calcium: "1000", 
       iron: "8",
+      errors: []
     };
   },
 
@@ -104,7 +108,8 @@ export default {
           this.$router.push("/consumptions");
         })
         .catch(error => {
-          this.errors = error.response.data.errors;
+          this.errors = error.response.data.messages;
+          console.log(this.errors);
         });
       }
     }

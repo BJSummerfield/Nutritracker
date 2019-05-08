@@ -64,7 +64,8 @@ export default {
             });
         })
         .catch(error => {
-          this.errors = error.response.data.errors;
+          console.log(error.response)
+          this.errors = error.response.data.messages;
           console.log(this.errors)
         });
     }

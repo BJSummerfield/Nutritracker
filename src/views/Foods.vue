@@ -30,6 +30,9 @@
         </div>
       </form>
     </div>
+    <div v-for="error in errors">
+      <h3>{{error}}</h3>
+    </div>
     <div class="container">
       <transition-group class="row" appear enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
         <div v-for="(food, theKey) in foods" :key="theKey">
@@ -50,7 +53,6 @@
 </template>
 
 <script>
-
 import axios from "axios";
 export default {
   data: function() {
@@ -178,8 +180,8 @@ export default {
         this.getGroups();
         this.moreInfo();
       }).catch(error => {
-        this.errors = error.response.data.errors;
-        console.log(error.response.data.errors);
+        this.errors = error.response.data.messages;
+        console.log(this.errors);
       });
     },
 
