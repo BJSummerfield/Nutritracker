@@ -5,6 +5,9 @@
       <canvas id="nutrientChart"></canvas>
     </div>
     <!-- datetime search -->
+    <!-- <div v-for="thediet in diet"> -->
+      <p>{{diet.energy}}</p>
+    </div>
     <h1>Your Meals</h1>
       <label>Date: </label>
         <datetime v-model="date" zone="local" value-zone="local" class="theme-black" style="width:50%; display:inline; margin: 0 auto;"></datetime>
@@ -94,15 +97,19 @@ export default {
       date: "",
       chart: null,
       sortTerm: "All",
-      diet: []
+      diet: [],
+      targetValue: [],
     };
   },
   created: function() {
     axios.get("/api/diets").then(response => {
       this.diet = response.data;
+      console.log(this.diet);
+      this.loadTarget();
     });
-    console.log(this.diet);
+    
     this.date = this.getDate;
+    
     this.updateConsumptions();
     console.log(this.date);
   },
@@ -129,6 +136,27 @@ export default {
   },
   
   methods: {
+
+    loadTarget() {
+      this.targetValue.push(this.diet.energy),
+      this.targetValue.push(this.diet.total_fat),
+      this.targetValue.push(this.diet.saturated_fat),
+      this.targetValue.push(this.diet.trans_fat),
+      this.targetValue.push(this.diet.cholesterol),
+      this.targetValue.push(this.diet.sodium),
+      this.targetValue.push(this.diet.total_carbs),
+      this.targetValue.push(this.diet.dietary_fiber),
+      this.targetValue.push(this.diet.sugars),
+      this.targetValue.push(this.diet.protein),      
+      this.targetValue.push(this.diet.vitamin_a),
+      this.targetValue.push(this.diet.vitamin_c),
+      this.targetValue.push(this.diet.calcium),
+      this.targetValue.push(this.diet.iron),      
+
+      this.nutrientChartData.data.datasets[1].data = this.targetValue;
+      console.log(this.nutrientChartData.data.datasets[1].data);
+    },
+
     sortFilter(sortWord) {
       this.sortTerm = sortWord;
       console.log(this.sortTerm);

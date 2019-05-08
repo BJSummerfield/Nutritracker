@@ -56,7 +56,7 @@ export const nutrientChartData = {
       },
       { // another line graph
         label: 'Target Values',
-        data: [2000, 65, 22, 2, 300, 2300, 300, 30, 33, 50, 900, 90, 1000, 8],
+        data: [],
         backgroundColor: [
           // 'rgba(71, 183,132,.5)',
           // 'rgba(71, 183,132,.5)',
