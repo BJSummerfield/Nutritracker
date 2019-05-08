@@ -9,43 +9,43 @@
             	<div class="span3">
 	            	<p>Calories</p>
 	            	<input type="text" class="form-control" v-model="diet.energy">
-								<p>Total Fat</p>
+								<p>Total Fat - g</p>
 								<input type="text" class="form-control" v-model="diet.total_fat">
 							</div>
 							<div class="span3">
-								<p>Saturated Fat</p>
+								<p>Saturated Fat - g</p>
 								<input type="text" class="form-control" v-model="diet.saturated_fat">
-								<p>Trans Fat</p>
+								<p>Trans Fat - g</p>
 								<input type="text" class="form-control" v-model="diet.trans_fat">
 							</div>
 							<div class="span3">
-								<p>Cholesterol</p>
+								<p>Cholesterol - mg</p>
 								<input type="text" class="form-control" v-model="diet.cholesterol">
-								<p>Sodium</p>
+								<p>Sodium - mg</p>
 								<input type="text" class="form-control" v-model="diet.sodium">
 							</div>
 							<div class="span3">
-								<p>Total Carbs</p>
+								<p>Total Carbs - g</p>
 								<input type="text" class="form-control" v-model="diet.total_carbs">
-								<p>Dietary Fiber</p>
+								<p>Dietary Fiber - g</p>
 								<input type="text" class="form-control" v-model="diet.dietary_fiber">
 							</div>
 							<div class="span3">
-								<p>Sugars</p>
+								<p>Sugars - g</p>
 								<input type="text" class="form-control" v-model="diet.sugars">
-								<p>Protein</p>
+								<p>Protein - g</p>
 								<input type="text" class="form-control" v-model="diet.protein">
 							</div>
 							<div class="span3">
-								<p>Vitamin A</p>
+								<p>Vitamin A - mg</p>
 								<input type="text" class="form-control" v-model="diet.vitamin_a">
-								<p>Vitamin C</p>
+								<p>Vitamin C - mg</p>
 								<input type="text" class="form-control" v-model="diet.vitamin_c">
 							</div>
 							<div class="span3">
-								<p>Calcium</p>
+								<p>Calcium - mg</p>
 								<input type="text" class="form-control" v-model="diet.calcium">
-								<p>Iron</p>
+								<p>Iron - mg</p>
 								<input type="text" class="form-control" v-model="diet.iron">
 							</div>
 						</div>

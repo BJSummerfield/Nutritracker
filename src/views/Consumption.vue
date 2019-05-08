@@ -5,9 +5,6 @@
       <canvas id="nutrientChart"></canvas>
     </div>
     <!-- datetime search -->
-    <!-- <div v-for="thediet in diet"> -->
-      <p>{{diet.energy}}</p>
-    </div>
     <h1>Your Meals</h1>
       <label>Date: </label>
         <datetime v-model="date" zone="local" value-zone="local" class="theme-black" style="width:50%; display:inline; margin: 0 auto;"></datetime>
@@ -106,11 +103,12 @@ export default {
       this.diet = response.data;
       console.log(this.diet);
       this.loadTarget();
+      this.updateConsumptions();
+      this.createChart('nutrientChart', this.nutrientChartData);
     });
     
     this.date = this.getDate;
-    
-    this.updateConsumptions();
+
     console.log(this.date);
   },
 
@@ -166,8 +164,7 @@ export default {
       axios.get("/api/consumptions").then(response => {
         this.consumptions = response.data;
         this.filterConsumption();
-        this.loadData();
-        this.createChart('nutrientChart', this.nutrientChartData);
+        this.updateChart();
       });
     },
 

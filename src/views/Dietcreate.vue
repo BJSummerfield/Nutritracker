@@ -9,43 +9,43 @@
             	<div class="span3">
 	            	<p>Calories</p>
 	            	<input type="text" class="form-control" v-model="energy">
-								<p>Total Fat</p>
+								<p>Total Fat - g</p>
 								<input type="text" class="form-control" v-model="total_fat">
 							</div>
 							<div class="span3">
-								<p>Saturated Fat</p>
+								<p>Saturated Fat - g</p>
 								<input type="text" class="form-control" v-model="saturated_fat">
-								<p>Trans Fat</p>
+								<p>Trans Fat - g</p>
 								<input type="text" class="form-control" v-model="trans_fat">
 							</div>
 							<div class="span3">
-								<p>Cholesterol</p>
+								<p>Cholesterol - mg</p>
 								<input type="text" class="form-control" v-model="cholesterol">
-								<p>Sodium</p>
+								<p>Sodium - mg</p>
 								<input type="text" class="form-control" v-model="sodium">
 							</div>
 							<div class="span3">
-								<p>Total Carbs</p>
+								<p>Total Carbs - g</p>
 								<input type="text" class="form-control" v-model="total_carbs">
-								<p>Dietary Fiber</p>
+								<p>Dietary Fiber - g</p>
 								<input type="text" class="form-control" v-model="dietary_fiber">
 							</div>
 							<div class="span3">
-								<p>Sugars</p>
+								<p>Sugars - g</p>
 								<input type="text" class="form-control" v-model="sugars">
-								<p>Protein</p>
+								<p>Protein - g</p>
 								<input type="text" class="form-control" v-model="protein">
 							</div>
 							<div class="span3">
-								<p>Vitamin_a</p>
+								<p>Vitamin A - mg</p>
 								<input type="text" class="form-control" v-model="vitamin_a">
-								<p>Vitamin_c</p>
+								<p>Vitamin C - mg</p>
 								<input type="text" class="form-control" v-model="vitamin_c">
 							</div>
 							<div class="span3">
-								<p>Calcium</p>
+								<p>Calcium - mg</p>
 								<input type="text" class="form-control" v-model="calcium">
-								<p>Iron</p>
+								<p>Iron - mg</p>
 								<input type="text" class="form-control" v-model="iron">
 							</div>
 						</div>
