@@ -176,6 +176,7 @@ export default {
       axios.post("/api/consumptions", params).then(response => {
         console.log(response.data);
         this.foodSearch = "";
+        this.group = "";
         this.foods = [];
         this.getGroups();
         this.moreInfo();

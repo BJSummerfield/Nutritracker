@@ -55,7 +55,7 @@
                   <div v-if="consumption === currentConsumption">
                     <p>Protein: {{ consumption.protein }}</p>
                     <p>Sodium: {{ consumption.sodium }}</p>
-                    <p>Energy: {{ consumption.energy }}</p>
+                    <p>Calories: {{ consumption.energy }}</p>
                     <p>Total Fat: {{ consumption.total_fat }}</p>
                     <p>Saturated Fat: {{ consumption.saturated_fat }}</p>
                     <!-- <p>Trans Fat: {{ consumption.trans_fat }}</p> -->
@@ -134,26 +134,6 @@ export default {
   },
   
   methods: {
-
-    loadTarget() {
-      this.targetValue.push(this.diet.energy),
-      this.targetValue.push(this.diet.total_fat),
-      this.targetValue.push(this.diet.saturated_fat),
-      this.targetValue.push(this.diet.trans_fat),
-      this.targetValue.push(this.diet.cholesterol),
-      this.targetValue.push(this.diet.sodium),
-      this.targetValue.push(this.diet.total_carbs),
-      this.targetValue.push(this.diet.dietary_fiber),
-      this.targetValue.push(this.diet.sugars),
-      this.targetValue.push(this.diet.protein),      
-      this.targetValue.push(this.diet.vitamin_a),
-      this.targetValue.push(this.diet.vitamin_c),
-      this.targetValue.push(this.diet.calcium),
-      this.targetValue.push(this.diet.iron),      
-
-      this.nutrientChartData.data.datasets[1].data = this.targetValue;
-      console.log(this.nutrientChartData.data.datasets[1].data);
-    },
 
     sortFilter(sortWord) {
       this.sortTerm = sortWord;
